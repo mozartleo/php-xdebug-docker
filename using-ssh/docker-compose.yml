@@ -1,0 +1,17 @@
+version: '2'
+services:
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./app.conf:/etc/nginx/conf.d/app.conf
+      - ./php_testapp:/var/www/html
+    ports:
+      - "8080:80"
+  php-fpm:
+    build: .
+    volumes:
+      - ./php_testapp:/var/www/html
+    ports:
+      - "2222:22"
+    
+    
